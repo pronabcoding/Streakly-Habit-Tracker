@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'">
+  <title>Streakly – Habit Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Streakly</h1>
+        <p class="subtitle">Build better habits, one day at a time</p>
+      </div>
+      <div class="header-right">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+        <button id="addHabitBtn" class="btn-primary">+ Add Habit</button>
+      </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats" id="stats">
+      <div class="stat-card">
+        <span class="stat-value" id="statTotal">0</span>
+        <span class="stat-label">Habits</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="statToday">0</span>
+        <span class="stat-label">Done Today</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="statBest">0</span>
+        <span class="stat-label">Best Streak</span>
+      </div>
+    </section>
+
+    <!-- Habit List -->
+    <section class="habits-section">
+      <div class="section-header">
+        <h2>Your Habits</h2>
+        <span id="todayDate" class="today-date"></span>
+      </div>
+      <div id="habitList" class="habit-list"></div>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">🔥</div>
+        <h3>No habits yet</h3>
+        <p>Start building consistency by adding your first habit.</p>
+        <button id="emptyAddBtn" class="btn-primary">Add Your First Habit</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Add / Edit Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add Habit</h3>
+        <button id="closeModal" class="icon-btn close-btn">✕</button>
+      </div>
+      <form id="habitForm">
+        <div class="form-group">
+          <label for="habitName">Habit name</label>
+          <input type="text" id="habitName" placeholder="e.g. Drink water, Read 20 pages..." required maxlength="50" autocomplete="off" />
+        </div>
+        <div class="form-group">
+          <label>Color</label>
+          <div class="color-picker" id="colorPicker">
+            <button type="button" class="color-option selected" data-color="#22c55e" style="background:#22c55e"></button>
+            <button type="button" class="color-option" data-color="#3b82f6" style="background:#3b82f6"></button>
+            <button type="button" class="color-option" data-color="#a855f7" style="background:#a855f7"></button>
+            <button type="button" class="color-option" data-color="#f59e0b" style="background:#f59e0b"></button>
+            <button type="button" class="color-option" data-color="#ef4444" style="background:#ef4444"></button>
+            <button type="button" class="color-option" data-color="#06b6d4" style="background:#06b6d4"></button>
+            <button type="button" class="color-option" data-color="#ec4899" style="background:#ec4899"></button>
+            <button type="button" class="color-option" data-color="#64748b" style="background:#64748b"></button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancelBtn" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn-primary" id="saveBtn">Save Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirm Delete -->
+  <div id="confirmModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content small">
+      <h3>Delete habit?</h3>
+      <p>This will permanently remove the habit and all its history.</p>
+      <div class="modal-actions">
+        <button id="cancelDelete" class="btn-secondary">Cancel</button>
+        <button id="confirmDelete" class="btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
