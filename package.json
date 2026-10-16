@@ -1,0 +1,15 @@
+{
+  "name": "streakly-electron",
+  "version": "1.0.0",
+  "description": "Streakly – Desktop Habit Tracker built with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "author": "Lab Project",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}
