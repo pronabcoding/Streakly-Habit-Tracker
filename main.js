@@ -63,7 +63,7 @@ ipcMain.handle('habits:save', (event, habits) => {
 app.whenReady().then(() => {
   createWindow();
 
-  app.on('activate', () => {
+  app.on('activate', ()  => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
     }
